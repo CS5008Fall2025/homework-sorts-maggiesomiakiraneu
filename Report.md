@@ -10,8 +10,16 @@ You are free to write a script to run the program and build your table (then cop
 ### Table [^note]
 | N | Bubble | Selection | Insertion | Merge | Quick |
 | :-- | :--: | :--: | :--: | :--: | :--: |
-
-
+| 10 | 0.000000 | 0.000001 | 0.000000 | 0.000001 | 0.000001 |
+| 50 | 0.000011 | 0.000008 | 0.000003 | 0.000008 | 0.000005 |
+| 100 | 0.000019 | 0.000011 | 0.000005 | 0.000007 | 0.000004 |
+| 500 | 0.000619 | 0.000376 | 0.000192 | 0.000093 | 0.000049 |
+| 1000 | 0.001328 | 0.000691 | 0.000379 | 0.000100 | 0.000061 |
+| 5000 | 0.041322 | 0.016627 | 0.008444 | 0.000479 | 0.000312 |
+| 10000 | 0.184616 | 0.064810 | 0.034473 | 0.001007 | 0.000674 |
+| 50000 | - | - | - | 0.005599 | 0.003905 |
+| 100000 | - | - | - | 0.012048 | 0.008330 |
+| 500000 | - | - | - | 0.068683 | 0.047434 |
 
 
 
@@ -25,25 +33,67 @@ Build a line chart using your favorite program. Your X axis will be N increasing
 Include the image in your markdown. As a reminder, you save the image in your repo, and use [image markdown].
 
 
+![Quadratic Sorts Comparison](quadratic_sorts.png)
+
+![Linearithmic Sorts Comparison](linearithmic_sorts.png)
 
 ### 2. Analysis
 Looking at the graph and the table, what can you say about the various sorts? Which are the fastest? Which are the slowest? Which are the most consistent? Which are the least consistent? Use this space to reflect in your own words your observations.
+
+
+Looking at the table, quick sort is fastest, and the bubble sort is the slowest. In terms of consistency, selection sort is most stable one. So what I can observe here is that, for smaller arrays under 100 elements, everything runs fast. But once the array size gets bigger, the difference is massive. 
 
 
 ### 3. Big O
 Build another table that presents the best, worst, and average case for Bubble, Selection, Insertion, Merge, and Quick. You are free to use resources for this, but please reference them if you do. 
 
 
+| Algorithm | Best Case | Average Case | Worst Case |
+|-----------|-----------|--------------|------------|
+| Bubble | O(n) | O(n²) | O(n²) |
+| Selection | O(n²) | O(n²) | O(n²) |
+| Insertion | O(n) | O(n²) | O(n²) |
+| Merge | O(n log n)| O(n log n) | O(n log n) |
+| Quick | O(n log n)| O(n log n) | O(n²) |
+
+
+
 #### 3.2 Worst Case
 Provide example of arrays that generate _worst_ case for Bubble, Selection, Insertion, Merge Sorts
 
+
+bubble sort: `[10, 9, 8, 7, 6, 5, 4, 3, 2, 1]` 
+
+
+Selection sort: `[5, 2, 8, 1, 9, 3, 7, 4, 6]`
+
+
+Insertion sort: `[10, 9, 8, 7, 6, 5, 4, 3, 2, 1]` 
+
+Merge Sort:  `[5, 2, 8, 1, 9, 3, 7, 4, 6]` 
 
 #### 3.3 Best Case
 Provide example of arrays that generate _best_ case for Bubble, Selection, Insertion, Merge Sorts 
 
 
+bubble sort: `[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]`
+
+selection: `[5, 2, 8, 1, 9, 3, 7, 4, 6]`
+
+insertion: `[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]`
+
+merge: `[5, 2, 8, 1, 9, 3, 7, 4, 6]`
+
+
+
 #### 3.4 Memory Considerations
 Order the various sorts based on which take up the most memory when sorting to the least memory. You may have to research this, and include the mathematical notation. 
+
+1. merge
+2. quick
+3. bubble
+4. selection
+5. insertion
 
 ### 4. Growth of Functions
 Give the following values, place them correctly into *six* categories. Use the bullets, and feel free to cut and paste the full LatexMath we used to generate them.  
@@ -59,12 +109,13 @@ $2^n$
 $100n$  
 $2^{(n-1)}$
 #### Categories
-* 
-*
-*
-*
-*
-*
+* Constant: $100$, $10000$
+* Linear: $3n$, $100n$
+* Linearithmic: $n\log_2n$
+* Quadratic: $n^2$, $5n^2+5n$
+* Exponential: $2^n$, $2^{(n-1)}$
+* Factorial: $n!$
+
 
 ### 5. Growth of Function Language
 
@@ -73,13 +124,13 @@ Pair the following terms with the correct function in the table.
 
 | Big $O$     |  Name  |
 | ------      | ------ |
-| $O(n^3)$    |  your answer here |
-| $O(1)$      |   |
-| $O(n)$      |   |
-| $O(\log_2n)$ |   |
-| $O(n^2)$    |   |
-| $O(n!)$     |   |
-| $O(2^n)$    |   |
+| $O(n^3)$    |  Cubic |
+| $O(1)$      | Constant  |
+| $O(n)$      | Linear  |
+| $O(\log_2n)$ | Logarithmic  |
+| $O(n^2)$    | Quadratic  |
+| $O(n!)$     | Factorial  |
+| $O(2^n)$    | Exponential  |
 
 
 
@@ -87,8 +138,31 @@ Pair the following terms with the correct function in the table.
 Look up stability as it refers to sorting. In your own words, describe one sort that is stable and one sort that isn't stable  
 
 
+A stable sort is insertion sort. If there are two 5 in the list, the one that comes first in the original list will still come first after sorting.
+
+An unstable sort is selection sort. It can change the order of numbers that are the same because it moves numbers around when it finds the smallest one.
+
+
+
+
 ### 6.2 When stability is needed?
-Explain in your own words a case in which you will want a stable algorithm over an unstable. Include an example. 
+Explain in your own words a case in which you will want a stable algorithm over an unstable. Include an example.
+
+
+
+Stability is needed when the order of same items matters. For example, I have students with names and grades like
+* Alex - B
+* Bob - A
+* Zoe - B
+
+If I sort by grade using a stable sort, students with the same grade stay in the same order. The list becomes:
+* Bob - A
+* Alex - B
+* Zoe - B
+
+Alex is still before Zoe because they both have B.
+
+If I use an unstable sort, Alex and Zoe might change order. I want a stable sort when the original order of equal items is important.
 
 ### 7. Gold Thief
 
@@ -97,9 +171,45 @@ You are planning a heist to steal a rare coin that weighs 1.0001 ounces. The pro
 #### 7.1 Algorithm
 Describe an algorithm that will help you find the coin. We encourage you to use pseudo-code, but not required.
 
+
+To find the one heavier coin among 250 coins, the key is to divide the coins into smaller groups and weigh them instead of comparing every coin one by one.
+
+Algorithm idea:
+
+Divide the 250 coins into 3 roughly equal piles.
+
+Weigh two piles against each other.
+
+If they balance, the heavier coin is in the pile you didn’t weigh.
+
+If they don’t balance, the heavier coin is in the heavier pile.
+
+Take the pile with the heavier coin and divide it into 3 smaller piles.
+
+Repeat steps 2–3 until only one coin is left.
+
+
+My pseudo-code:
+```
+function find_haviest_coin(coins):
+    while coins > 1:
+        divide coins into 3 piles:
+            compare pile 1 and pile 2:
+                if pile 1 = pile 2:
+                    coins = pile 3
+                elif pile 1 > pile 2:
+                        coins = pile 1
+                else:
+                    coin = pile 2
+        return coins[0]
+```
+
+
+
 #### 7.2 Time Complexity
 What is the average time complexity of your algorithm? 
 
+My algorithm reduces the number of coins to check by 2/3 each time instead of checking one by one. So the number of weighings needed is about log base 3 of n, where n is the number of coins. For 250 coins, it will take roughly log₃(250). So the average time complexity is O(log n).
 
 ## Technical Interview Practice Questions
 
@@ -143,3 +253,9 @@ Add your references here. A good reference includes an inline citation, such as 
 
 [ACM Reference Format]: https://www.acm.org/publications/authors/reference-formatting
 [IEEE]: https://www.ieee.org/content/dam/ieee-org/ieee/web/org/conferences/style_references_manual.pdf
+
+
+
+https://www.geeksforgeeks.org/dsa/comparison-among-bubble-sort-selection-sort-and-insertion-sort/
+
+https://workat.tech/problem-solving/tutorial/sorting-algorithms-bubble-insertion-selection-sort-veubp86w3e1r
