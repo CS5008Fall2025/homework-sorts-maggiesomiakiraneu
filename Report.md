@@ -217,7 +217,18 @@ For both these questions, are you are free to use what you did as the last secti
 
 1. Select one technical interview question (this module or previous) from the [technical interview list](https://github.com/CS5008-khoury/Resources/blob/main/TechInterviewQuestions.md) below and answer it in a few sentences. You can use any resource you like to answer the question.
 
-2. Select one coding question (this module or previous) from the [coding practice repository](https://github.com/CS5008-khoury/Resources/blob/main/LeetCodePractice.md) and include a c file with that code with your submission. Make sure to add comments on what you learned, and if you compared your solution with others. 
+
+
+**Analysis of Algorithms**
+What is Big O? How does it help us analyze algorithms?
+
+Big O notation is a way to measure how efficient an algorithm is. It tells us how the time it takes to run or the memory it uses grows as the size of the input increases. Essentially, it shows the maximum amount of time or space an algorithm might need, which helps us compare different algorithms and choose the best one for a problem.
+
+When would we want an algorithm with a higher time complexity than another faster algorithm?
+
+We want to an algorithm with a higher time complexity when it is simpler to write and understand, use less memory, or behave more predictably. Also, if the input size is small, the slower algorithm may still be fast enough, making the extra complexity of a faster algorithm unnecessary.
+
+1. Select one coding question (this module or previous) from the [coding practice repository](https://github.com/CS5008-khoury/Resources/blob/main/LeetCodePractice.md) and include a c file with that code with your submission. Make sure to add comments on what you learned, and if you compared your solution with others. 
  
 
 ## Deeper Thinking
@@ -259,3 +270,9 @@ Add your references here. A good reference includes an inline citation, such as 
 https://www.geeksforgeeks.org/dsa/comparison-among-bubble-sort-selection-sort-and-insertion-sort/
 
 https://workat.tech/problem-solving/tutorial/sorting-algorithms-bubble-insertion-selection-sort-veubp86w3e1r
+
+https://www.geeksforgeeks.org/dsa/analysis-algorithms-big-o-analysis/
+
+
+
+
