@@ -13,7 +13,18 @@
 // Output: The index in an array of the minimum value between a range [start,stop]
 int findMinimum(int *array, int start, int stop)
 {
-    return 0; // modify to return the index of the min value
+    // return 0; // modify to return the index of the min value
+    int min_index = start; //assume first element is minimum
+    
+    for (int i = start + 1; i < stop; i++) //check remaining elements
+    {
+        if (array[i] < array[min_index]) //if found smaller element
+        {
+            min_index = i; //update minimum index
+        }
+    }
+    
+    return min_index; //return index of the min value
 }
 
 
@@ -31,6 +42,19 @@ int findMinimum(int *array, int start, int stop)
 void selectionSortIntegers(int *array, unsigned int size, int print)
 {
     // todo: implement selection sort
+    if (size <= 1) return; //adding this line to fix the empty list issue
+
+    for (unsigned int i = 0; i < size - 1; i++)
+    {
+        
+        int min_idx = findMinimum(array, i, size); //find min in unsorted part
+        swap(&array[i], &array[min_idx]); //swap min to current position
+        
+        if (print) 
+        {
+            printIntArray(array, size);
+        }
+    }
 }
 
 /***  Code for Insertion Sort ***/
@@ -49,7 +73,26 @@ void selectionSortIntegers(int *array, unsigned int size, int print)
 void insertionSortIntegers(int *array, unsigned int size, int print)
 {
     // TODO: Implement insertion sort
- 
+    if (size <= 1) return; //adding this line to fix the empty list issue
+
+    for (unsigned int i = 1; i < size; i++) //start from the 2nd element
+    {
+        int key = array[i]; //store current element to insert
+        int j = i - 1; //start comparing with previous element
+        
+        while (j >= 0 && array[j] > key) //shift larger element right
+        {
+            array[j + 1] = array[j]; //move element one position right
+            j--; //move to previous element
+        }
+        
+        array[j + 1] = key; //insert key at correct position
+        
+        if (print) //print after each pass if requested
+        {
+            printIntArray(array, size);
+        }
+    }
 
 }
 
@@ -69,6 +112,23 @@ void insertionSortIntegers(int *array, unsigned int size, int print)
 void bubbleSortIntegers(int *array, unsigned int size, int print)
 {
     // code generated from lab
+    if (size <= 1) return; //adding this line to fix the empty list issue
+    
+    for (unsigned int i = 0; i < size - 1; i++)
+    {
+        for (unsigned int j = 0; j < size - i - 1; j++)
+        {
+            if (array[j] > array[j + 1])
+            {
+                swap(&array[j], &array[j + 1]);
+            }
+        }
+        
+        if (print)
+        {
+            printIntArray(array, size);
+        }
+    }
 
 }
 
@@ -79,13 +139,59 @@ void bubbleSortIntegers(int *array, unsigned int size, int print)
 // Second subarray is arr[m+1..r]
 void merge(int arr[], int temp[], int l, int m, int r)
 {
-    if (arr == NULL || temp == NULL)
+    // if (arr == NULL || temp == NULL)
+    // {
+    //     exit(1);
+    // }
+
+    // if (l > m || m + 1 > r)
+    //     return;
+
+    if (arr == NULL || temp == NULL) //check for null
     {
         exit(1);
     }
 
-    if (l > m || m + 1 > r)
+    if (l > m || m + 1 > r) //check invalid range
         return;
+
+    int i = l; //pointer for left subarray
+    int j = m + 1; //pointer for right subarray
+    int k = l; //pointer for temp array
+
+    while (i <= m && j <= r) //merge while both subarrays have elements
+    {
+        if (arr[i] <= arr[j]) //left element is smaller or equal
+        {
+            temp[k] = arr[i]; //copy from left subarray
+            i++;
+        }
+        else //right element is smaller
+        {
+            temp[k] = arr[j]; //copy from right subarray
+            j++;
+        }
+        k++;
+    }
+
+    while (i <= m) //copy remaining left elements
+    {
+        temp[k] = arr[i];
+        i++;
+        k++;
+    }
+
+    while (j <= r) //copy remaining right elements
+    {
+        temp[k] = arr[j];
+        j++;
+        k++;
+    }
+
+    for (i = l; i <= r; i++) //copy merged result back to original array
+    {
+        arr[i] = temp[i];
+    }
 
 
 }
@@ -101,9 +207,17 @@ void merge(int arr[], int temp[], int l, int m, int r)
 // Output: No value is returned, but 'array' should be modified to store a sorted array of numbers.
 void merge_sort(int arr[], int temp[], int l, int r)
 {
+    if (l < r) //only sort if range has multiple elements
+    {
+        int m = l + (r - l) / 2; //cal midpoint avoiding overflow
+        
+        merge_sort(arr, temp, l, m); //recursively sort left half
+        merge_sort(arr, temp, m + 1, r); //recursively sort right half
+        merge(arr, temp, l, m, r); //merge sorted halves
+    }
    
 }
-
+//
 // lab build, merge sort
 
 void mergeSortIntegers(int *array, unsigned int size, int print)
