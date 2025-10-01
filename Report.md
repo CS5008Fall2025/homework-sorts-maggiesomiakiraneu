@@ -176,17 +176,17 @@ To find the one heavier coin among 250 coins, the key is to divide the coins int
 
 Algorithm idea:
 
-Divide the 250 coins into 3 roughly equal piles.
+1. Divide the 250 coins into 3 roughly equal piles.
 
-Weigh two piles against each other.
+2. Weigh two piles against each other.
 
-If they balance, the heavier coin is in the pile you didn’t weigh.
+3. If they balance, the heavier coin is in the pile I didn’t weigh.
 
-If they don’t balance, the heavier coin is in the heavier pile.
+4. If they don’t balance, the heavier coin is in the heavier pile.
 
-Take the pile with the heavier coin and divide it into 3 smaller piles.
+5. Take the pile with the heavier coin and divide it into 3 smaller piles.
 
-Repeat steps 2–3 until only one coin is left.
+6. Repeat steps 2–3 until only one coin is left.
 
 
 My pseudo-code:
