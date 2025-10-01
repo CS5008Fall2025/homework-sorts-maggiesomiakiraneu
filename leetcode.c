@@ -21,3 +21,6 @@ int* twoSum(int* nums, int numsSize, int target, int* returnSize) {
 
 //link to the problem: https://leetcode.com/problems/two-sum/
 
+// This was one of the questions I encountered in my first tech interview a few years ago. At the time, I was using Python rather than C. Regardless of the language, I was self-taught and had no formal background in algorithms. My solution had a time complexity of $O(n^2)$, which worked fine because the array size was small.
+
+// However, when the interviewer asked why my solution was $O(n^2)$, I didn’t really understand the question. Now I can explain it clearly that the input size is small, the slower algorithm is still be fast enough, making the extra complexity of a faster algorithm unnecessary.
