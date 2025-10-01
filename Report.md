@@ -218,8 +218,9 @@ For both these questions, are you are free to use what you did as the last secti
 1. Select one technical interview question (this module or previous) from the [technical interview list](https://github.com/CS5008-khoury/Resources/blob/main/TechInterviewQuestions.md) below and answer it in a few sentences. You can use any resource you like to answer the question.
 
 
-
+**Questions I selected:**
 **Analysis of Algorithms**
+
 What is Big O? How does it help us analyze algorithms?
 
 Big O notation is a way to measure how efficient an algorithm is. It tells us how the time it takes to run or the memory it uses grows as the size of the input increases. Essentially, it shows the maximum amount of time or space an algorithm might need, which helps us compare different algorithms and choose the best one for a problem.
@@ -230,23 +231,45 @@ We want to an algorithm with a higher time complexity when it is simpler to writ
 
 1. Select one coding question (this module or previous) from the [coding practice repository](https://github.com/CS5008-khoury/Resources/blob/main/LeetCodePractice.md) and include a c file with that code with your submission. Make sure to add comments on what you learned, and if you compared your solution with others. 
  
+Link to the Leetcode questoin I picked: https://leetcode.com/problems/two-sum/
+
+This was one of the questions I encountered in my first tech interview a few years ago. At the time, I was using Python rather than C. Regardless of the language, I was self-taught and had no formal background in algorithms. My solution had a time complexity of $O(n^2)$, which worked fine because the array size was small.
+
+However, when the interviewer asked why my solution was $O(n^2)$, I didn’t really understand the question. Now I can explain it clearly that the input size is small, the slower algorithm is still be fast enough, making the extra complexity of a faster algorithm unnecessary.
 
 ## Deeper Thinking
 Sorting algorithms are still being studied today. They often include a statistical analysis of data before sorting. This next question will require some research, as it isn't included in class content. When you call `sort()` or `sorted()` in Python 3.6+, what sort is it using? 
 
+
+
+I looked up several sources about this, but I only found a post in Stackoverflow mentioned about the type of sort Python 3.6+ uses. It is using the Timsort().
+
 #### Visualize
 Find a graphic / visualization (can be a youtube video) that demonstrates the sort in action. 
+https://youtu.be/WprjBK0p6rw
+
 
 #### Big O
-Give the worst and best case time-complexity, and examples that would generate them. 
+Give the worst and best case time-complexity, and examples that would generate them.
+
+
+Best case: O(n)
+When the array is already sorted or nearly sorted. For example: `[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]`. Timsort detects the array is already in order and only needs one pass through the data to verify, making it linear time
+
+Worst case: $O(n^2)$. For example: nums = [1, 2, 3, 4, 5, 100], target = 105. The algorithm has to check almost every possible pair before finding the solution. 
 
 <hr>
 
 ## References
 Add your references here. A good reference includes an inline citation, such as [1] , and then down in your references section, you include the full details of the reference. Use [ACM Reference format].
 
-1. Reference info, date, etc.
-2. ...
+1. Comparison among Bubble Sort, Selection Sort and Insertion Sort, July 2025, Retrived Oct 1, 2025 from https://www.geeksforgeeks.org/dsa/comparison-among-bubble-sort-selection-sort-and-insertion-sort/
+
+2. Sorting Algorithms, Retrived Oct 1, 2025 from https://workat.tech/problem-solving/tutorial/sorting-algorithms-bubble-insertion-selection-sort-veubp86w3e1r
+
+3. Big O Notation Tutorial - A Guide to Big O Analysis, Aug 27, 2025, Retrived Oct 1, 2025, from https://www.geeksforgeeks.org/dsa/analysis-algorithms-big-o-analysis/
+
+4. Stackoverflow: what algorithm does python's sorted() use? Retrived Oct 1, 2025, from https://stackoverflow.com/questions/10948920/what-algorithm-does-pythons-sorted-use#:~:text=3%20Answers,39
 
 
 
@@ -265,13 +288,6 @@ Add your references here. A good reference includes an inline citation, such as 
 [ACM Reference Format]: https://www.acm.org/publications/authors/reference-formatting
 [IEEE]: https://www.ieee.org/content/dam/ieee-org/ieee/web/org/conferences/style_references_manual.pdf
 
-
-
-https://www.geeksforgeeks.org/dsa/comparison-among-bubble-sort-selection-sort-and-insertion-sort/
-
-https://workat.tech/problem-solving/tutorial/sorting-algorithms-bubble-insertion-selection-sort-veubp86w3e1r
-
-https://www.geeksforgeeks.org/dsa/analysis-algorithms-big-o-analysis/
 
 
 
